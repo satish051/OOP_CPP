@@ -1,0 +1,10 @@
+Function Overloading:
+        Function Overloading is defined as the process of having two or more functions
+        with the same name but different parameters.
+
+Example:
+    #include<iostream>
+    using namespace std;
+    int add(int, int);
+    int add (double, double, double);
+    

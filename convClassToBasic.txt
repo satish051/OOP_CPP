@@ -1,0 +1,78 @@
+Syntax
+Operator typename()
+{
+    body of statements
+}
+
+Example:
+To demonstrate class type to basic type conversion
+#include<iostream>
+using namespace std;
+class Time{
+int hrs,min;
+public:
+Time(int,int);
+operator int();
+};
+Time::Time(int a, int b)
+{
+    hrs=a;
+    min=b;
+}
+Time::operator int(){
+    return(hr*60=min);
+}
+int main(){
+    int h,m,duration;
+    cout<<"Enter hours:";
+    cin>>h;
+    cout<<"Enter minutes: ";
+    cin>>m;
+    Time t(h,m);
+    duration=t;
+    cout<<"total minutes are: "<<duration;
+    return 0;
+}
+
+3. Conversion from one class type to another class type
+Conversion from one class to another class can be performed either by
+using constructor or type conversion function
+
+Example:
+//Program ot convert class time to class minutes
+#include<iostream>
+using namespace std;
+class Time{
+int hrs,min;
+public:
+Time(int h, int m){
+    hrs=h;
+    min=m;
+}
+int getminutes()
+{
+    int totmin=(hrs*60)+min;
+    return totmin;
+}
+void display()
+{
+    cout<<"Hours: "<<hrs<<endl;
+    cout<<"Minutes: "<<min<<endl;
+}
+};
+class minute{
+    int min;
+    public:
+    minute()
+    {
+        min=0;
+    }
+    void operator =(Time t)
+    {
+        min=t.getminutes();
+    }
+    void display()
+    {
+        cout<<"\n Total minutes: "<<min<<endl;
+    }
+};

@@ -1,0 +1,176 @@
+Virtual Funtion, Polymerphism and Miscellaneous 
+    *Virtual Function:
+        -A virtual Function in C++ is a base class member function that you can redefine in a derived class to achieve Polymorphism.
+        -To define virtual function, we use the virtual keyword.
+        -Once declare the function in the base class we use a pointer or reference to call the virtual class and execute its virtual version in derived class.
+        
+    *Rules of virtual function
+    -The function cannot be static.
+    -you derive them using the virtual keyword.
+    -They can be a friend function of another class.
+    -the prototype of these functions should be the same for both base class and derived class.
+    -Virtual functions are accessible using object pointer.
+    -you can create a virtual destruction but not a constructor.
+    -Redefining the virtual function in the derived class is optional, but it needs to be defined in the base class.
+    
+    **********((compile time)/early  binding and late binding difference)****may be on exam 
+
+    *Behavior of Virtual Function
+    1. Compile time Behavior
+        - Early binding 
+        -diff types of pointer 
+    2. Runtime Behavior
+        -late binding
+        -depending on the location where pointer is pointing 
+
+    Define Binding.
+        The process of converting identifiers into addresses.
+
+    Types of binding 
+        -Early binding 
+        -late binding
+
+    -Early binding 
+        -It is compile time polymerphism.
+        -It directly associates an addresses to the function call.
+        Example:Function overloading 
+    -Late binding
+        -It is run time polymerphism.
+        -It is achieved by using virtual function.
+        Example:To demostrate the behaviour of virtual function.
+                        #include<iostream>
+                        using namespace std;
+                        class base{
+                            public:
+                            virtual void show(){
+                                cout<<"This is base class."<<endl;
+                            }
+                            void print(){
+                                cout<<"print base class"<<endl; 
+                            }
+                        };
+                        class derived:public base{
+                            public:
+                            void show(){
+                                cout<<"this is derived class:";
+                            }
+                            void print(){
+                                cout<<"print derived class:";
+                            }
+                        };
+                        int main(){
+                            base* siu;
+                            derived d;
+                            siu=&d;
+                            siu->print(); //compile time
+                            siu->show(); //run time
+                            return 0;
+                        }
+        
+
+
+        Pure virtual function
+            -A function that doesnot perform any task (do nothing)
+            -It is used to declare in abstract base class.
+        Syntax:
+            virtual void show() =0;
+
+            //make virtual function make abstract class and derived the class circle and rectangle then find the area 
+
+
+Friend function and friend class:
+    -Friend functions that allow us to access member functions from outside the class
+    -It has the authority to access all protected and private members of the class
+
+    Syntax:
+    class classname{
+        friend returnType Function_name(arguments); 
+    };  
+    Another method of declaration:
+    class classB;
+    class classA{
+        friend class classB;
+    } 
+    class classB{
+        
+    };
+    Example: Write a C++ program to demonstrate the working of the friend function
+        #include<iostream>
+        using namespace std;
+        class Distance{
+                private:
+                 int m;
+                 friend int add(Distance);
+                 public:
+                 Distance():m(0){
+
+                 }
+        };
+        int add(Distance d){
+            d.m += 5;
+            return d.m;
+        }
+        int main(){
+            Distance d1;
+            cout<<"Distance is : "<<add(d1);
+            return 0;
+        }
+    Example: Write a program to add members of two members of two different classes using friend function
+    #include<iostream>
+    using namespace std;
+    class class_B;
+    class classA{
+        public:
+        class A:numA(6){
+
+        }
+        private:
+        int numA;
+        friend int add (classA,class_B);
+    };
+    class class_B{
+        public:
+        class_B:num_B(7)
+        {
+
+        }
+        private:
+        int num_B;
+        friend int add(classA,class_B);
+    };
+    int add(classA obj,class_B obj2){
+        return (obj.numA+obj2.num_B);
+    }
+    int main(){
+        classA obj;
+        class_B obj2;
+        cout<<"Addition is :"<<add(obj,obj2);
+        return 0;
+    }
+
+    This pointer: The this pointer holds the address of the current object, in simple words 
+    you can say that this pointer points to the current object of the class.
+    Example:
+    #include<iostream>
+    using namespace std;
+    class A{
+        private:
+        int num;
+        char ch;
+        public:
+        void setValues(int num,char ch){
+            this ->num=num;
+            this->ch=ch;
+        }
+        void display(){
+            cout<<num<<endl;
+            cout<<ch;
+        }
+
+    };
+    int main(){
+        A obj;
+        obj.setValues(100,'A');
+        obj.display();
+        return 0;
+    }

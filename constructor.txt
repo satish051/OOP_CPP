@@ -1,0 +1,63 @@
+Constructor:
+    -Constructor is a special member function of a class that initializes the object of
+    the class. Constructor name is same as the class name and it doesn't have return type.
+    - Constructor is a special type of member function that is called automatically when object is created.
+     
+     Example:
+        class A
+        {
+            int x;
+            A() //Constructor
+            {
+                //object initialization
+            }
+        };
+
+Types:
+    -Default Constructor
+    -Parameterized Constructor
+    -Copy Constructor
+
+Default Constructor:
+    Constructor with no parameter.
+        Example:
+        #include<iostream>
+        using namespace std;
+        class cube{
+            public: 
+                int side;
+            cube(){
+                side=10;
+            }
+        };
+
+        int main()
+        {
+            cube c;
+            cout<<c.side;
+            return 0;
+        }
+    
+Parameterized Constructor:
+    Constructor with parameters using this constructor you can provide different values to data
+    members of different objects by passing the appropriate values as arguments.
+        Example:
+            #include<iostream>
+            using namespace std;
+
+            class cube{
+                public:
+                    int side;
+                    cube(int x){
+                        side=x;
+                    }
+            };
+
+            int main(){
+                cube c1(10);
+                cube c2(20);
+                cout<<c1.side;
+                cout<<c2.side;
+            }
+
+

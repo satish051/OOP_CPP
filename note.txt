@@ -1,0 +1,44 @@
+~(tilde operator)
+Destructor:
+        A destructor is a member function that is invoked automatically when object
+        goes out of scope.
+        or explicitly destroyed by a call to 'delete'
+        class name{
+            public:
+            name(){
+                //constructor statements
+            }
+            ~name(){
+                //destructor name
+            }
+        };
+Object as function arguments:
+
+        function_name(object_name);
+
+        Example:
+            class rect
+            {
+                private:
+                    float length,breadth,area;
+
+                public:
+                void set(float x,float y)
+                {
+                    length=x;
+                    breadth=y;
+                }
+                void area(rect obj1)
+                {
+                    area=obj1.length*obj1.breadth;
+                    cout<<"Area is "<<area;
+                }
+            };
+
+            int main()
+            {
+                rect r1;
+                r1.set(10,5);
+                area(r1);
+                return 0;
+            }

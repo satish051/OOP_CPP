@@ -1,0 +1,112 @@
+Assignment Operator Overloading: 
+    To perforn the operation on user defined data all values of one object 
+    can be copied to another object.
+
+    Syntax:
+        return_type::operator =(parameter list)
+        {
+            //statements to be executed
+        }
+    Exampe :
+    To demonstrate the operator overloading 
+    #include<iostream>
+    using namespace std;
+    class Employee
+    {
+        public:
+        int salary;
+        Employee(int sal)
+        {
+            salary=sal;
+        }
+        Employee operator =(Employee x)
+        {
+            Employee temp=x.salary;
+            return temp;
+        }
+    };
+    int main(){
+        Employee e1(200);
+        Employee e2(500);
+        Employee e3=e1;
+        cout<<e3.salary;
+        return 0;
+
+    }
+Arithmetic Operator Overloading(Binary Operators):(+,-,*,/)
+    Example:
+        Write a C++ program to overload the binary operato + to add two complex numbers
+        #include<iostream>
+using namespace std;
+class complex
+{
+        int real ,img;
+    public:
+    void getValue()
+    {
+        cout<<"Enter the value of real number: ";
+        cin>>real;
+        cout<<"Enter the value of imaginary number: ";
+        cin>>img;
+    }
+    complex operator +(complex obj)
+    {
+        complex temp;
+        temp.real=real+obj.real;
+        temp.img = img + obj.img;
+        return (temp);
+    }
+
+    void display()
+    {
+        cout<<real<<" + "<<"("<<img<<")"<<"i"<<endl;
+    }
+};
+int main()
+{
+    complex c1,c2,c3;
+    c1.getValue();
+    c2.getValue();
+    c3=c1+c2;
+    cout <<"Result is "<<endl;
+    c3.display();
+    return 0;
+}
+There are three types of possible type conversion:
+1. Conversion from basic type to class type.
+2. Conversion from class type.
+3. Conversion from one class type to another classtype
+
+1. Conversion from basic to class type:
+    - This type of conversion is possible in two ways
+        -using Constructor
+        -using Operator Overloading
+    
+    using Constructor(Basic type to Class type)
+    Example:
+        #include<iostream>
+        using namespace std;
+        class Time{
+            int hrs,min;
+            public:
+                Time(int);
+                void display();
+        };
+        Time::Time(int t){
+            cout<<"Basic Type to Class type"<<endl;
+            hrs=t/60;
+            min=t%60;
+        }
+        void Time::display(){
+            cout<<hrs<<"hrs"<<endl;
+            cout<<min<<"min"<<endl;
+        }
+    int main()
+    {
+        int dur;
+        cout<<"Enter the time duration in minutes";
+        cin>>dur;
+        Time t1=dur;
+        t1.display();
+        return 0;
+    }
